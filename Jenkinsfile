@@ -49,15 +49,7 @@ pipeline {
 			}
 		}
 
-		stage('Deploy green container') {
-			steps {
-				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
-					sh '''
-						kubectl apply -f ./green-controller.json
-					'''
-				}
-			}
-		}
+		
 
 		stage('Create the service in the cluster, redirect to blue') {
 			steps {
